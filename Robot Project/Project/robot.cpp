@@ -12,7 +12,12 @@ using namespace std;
 		x = 0;
 		y = 0;
 		total_distance = 0; 
-	}
+		direction = 0; 
+		/*0 - the robot is facing north
+		  1 - the robot is facing east
+		  2 - the robot is facing south
+		  3 - the robot is facing west */
+	
 	const string & robot::name() const {
 		return robot_name;
 	}
@@ -24,6 +29,9 @@ using namespace std;
 	}
 	int robot::travelled() const {
 		return total_distance;
+	}
+	int robot::direction() const {
+		return direction % 4;
 	}
 	void robot::move_north() {
 		y += 1;
@@ -41,6 +49,13 @@ using namespace std;
 
 		x -= 1;
 		total_distance++;
+	}
+	void robot::rotate_left() {
+		direction--;
+	}
+	
+	void robot::rotate_right() {
+		direction++;
 	}
 int distance(const robot &r)
 {
